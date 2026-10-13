@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Spoke &amp; Chain | Bikes for every road</title>
+  <meta name="description" content="Browse road, mountain, city and electric bikes. Filter by type, sort by price and find your frame size.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a class="brand" href="#top">Spoke &amp; Chain</a>
+    <nav aria-label="Main">
+      <a href="#shop">Bikes</a>
+      <a href="#fit">Find your size</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <h1>Pick a road.<br>We'll find the bike.</h1>
+      <p class="hero-copy">Eight bikes, built and tested in our workshop. Scroll and the wheels turn.</p>
+      <a class="btn" href="#shop">Browse bikes</a>
+      <div class="hero-bike" id="heroBike" aria-hidden="true"></div>
+      <div class="road" aria-hidden="true"></div>
+    </section>
+
+    <!-- Shop -->
+    <section class="shop" id="shop">
+      <div class="section-head">
+        <h2>The bikes</h2>
+        <p id="resultCount" aria-live="polite"></p>
+      </div>
+
+      <div class="controls">
+        <div class="chips" role="group" aria-label="Filter by type">
+          <button class="chip" data-type="All" aria-pressed="true">All</button>
+          <button class="chip" data-type="Road" aria-pressed="false">Road</button>
+          <button class="chip" data-type="Mountain" aria-pressed="false">Mountain</button>
+          <button class="chip" data-type="City" aria-pressed="false">City</button>
+          <button class="chip" data-type="Electric" aria-pressed="false">Electric</button>
+        </div>
+        <label class="sort">
+          Sort by
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="weight">Lightest first</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="grid" id="bikeGrid"></div>
+    </section>
+
+    <!-- Size finder -->
+    <section class="fit" id="fit">
+      <div class="fit-text">
+        <h2>Find your frame size</h2>
+        <p>Enter your height and we'll suggest a frame. Standing between two sizes? Pick the smaller one for city riding and the larger one for long road rides.</p>
+      </div>
+      <form class="fit-tool" id="fitForm" novalidate>
+        <label for="heightInput">Your height (cm)</label>
+        <div class="fit-row">
+          <input id="heightInput" type="number" inputmode="numeric" min="130" max="210" placeholder="e.g. 172" required>
+          <button class="btn" type="submit">Get my size</button>
+        </div>
+        <p class="fit-result" id="fitResult" aria-live="polite">Enter a height between 130 and 210 cm.</p>
+      </form>
+    </section>
+
+    <!-- Visit -->
+    <section class="visit" id="visit">
+      <h2>Come ride one</h2>
+      <div class="visit-grid">
+        <div>
+          <h3>Workshop</h3>
+          <p>14 Canal Road<br>Open daily, 9 am to 7 pm</p>
+        </div>
+        <div>
+          <h3>Test rides</h3>
+          <p>Free, 30 minutes per bike. Bring a photo ID.</p>
+        </div>
+        <div>
+          <h3>Call or message</h3>
+          <p><a href="tel:+910000000000">+91 00000 00000</a><br><a href="mailto:ride@spokeandchain.example">ride@spokeandchain.example</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> Spoke &amp; Chain. Sample site for demonstration.</p>
+  </footer>
+
+  <!-- Details dialog -->
+  <dialog id="bikeDialog" aria-labelledby="dlgTitle">
+    <form method="dialog"><button class="dlg-close" aria-label="Close details">&times;</button></form>
+    <div class="dlg-art" id="dlgArt"></div>
+    <div class="dlg-body">
+      <p class="dlg-type" id="dlgType"></p>
+      <h3 id="dlgTitle"></h3>
+      <p id="dlgBlurb"></p>
+      <dl class="specs" id="dlgSpecs"></dl>
+      <p class="dlg-price" id="dlgPrice"></p>
+      <a class="btn" href="#visit" id="dlgCta">Book a test ride</a>
+    </div>
+  </dialog>
+
+  <script src="script.js"></script>
+</body>
+</html>
